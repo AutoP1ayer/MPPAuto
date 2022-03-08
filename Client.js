@@ -67,6 +67,7 @@ class Client extends EventEmitter {
         }
         var self = this;
         this.ws.addEventListener("close", function(evt) {
+            console.log(evt.code, evt.reason);
             self.user = undefined;
             self.participantId = undefined;
             self.channel = undefined;
@@ -84,7 +85,7 @@ class Client extends EventEmitter {
             } else {
                 ++self.connectionAttempts;
             }
-            var ms_lut = [50, 2500, 10000];
+            var ms_lut = [50, 500, 1000, 2500, 3000];
             var idx = self.connectionAttempts;
             if(idx >= ms_lut.length) idx = ms_lut.length - 1;
             var ms = ms_lut[idx];
