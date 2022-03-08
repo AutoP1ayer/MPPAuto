@@ -3,7 +3,7 @@
 
 $(function () {
 
-  console.log("%cWelcome to MPP's developer console!", "color:blue; font-size:20px;");
+  console.log("%cWelcome to MPPAuto developer console!", "color:blue; font-size:20px;");
   console.log("%cCheck out the source code: https://github.com/AutoP1ayer/MPPAuto\nGuide for coders and bot developers: https://docs.google.com/document/d/1FvHDNN5C5dbY6M898ouQ50ix4HDodibmLboaVBIX9PA/edit?usp=sharing", "color:gray; font-size:12px;")
 
 
