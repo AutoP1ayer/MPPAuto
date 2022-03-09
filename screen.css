@@ -1021,6 +1021,31 @@ input[type="range"]:hover {
     right: 8px;
 }
 
+.reply-button {
+    font-size: 12px;
+    background: #111;
+    padding: 2px 4px;
+    cursor: pointer;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    text-shadow: none;
+    transition: all 1s;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -o-transition: all 1s;
+    opacity: .5;
+}
+
+.reply-button:hover {
+    background: #222;
+    opacity: 1;
+    transition: all .25s;
+    -webkit-transition: all .25s;
+    -moz-transition: all .25s;
+    -o-transition: all .25s;
+}
+
 #chat {
     display: none;
     opacity: 1;
@@ -1072,6 +1097,14 @@ input[type="range"]:hover {
     margin-right: 8px;
 }
 
+#chat li .replyArrow {
+    margin-right: 8px;
+}
+
+#chat li .replyText {
+    margin-right: 8px;
+}
+
 #chat li .timestamp {
     margin-right: 8px;
 }
@@ -1095,6 +1128,10 @@ input[type="range"]:hover {
 
 #chat li .message {
     margin-right: 6px;
+}
+
+#chat li .message2 {
+    margin-right: 8px;
 }
 
 #chat li .quote {

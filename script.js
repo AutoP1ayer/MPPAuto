@@ -1,4 +1,3 @@
-
 // 钢琴
 
 $(function () {
@@ -19,7 +18,7 @@ $(function () {
   var gMidiOutTest;
 
   if (!Array.prototype.indexOf) {
-    Array.prototype.indexOf = function (elt /*, from*/) {
+    Array.prototype.indexOf = function (elt /*, from*/ ) {
       var len = this.length >>> 0;
       var from = Number(arguments[1]) || 0;
       from = (from < 0) ? Math.ceil(from) : Math.floor(from);
@@ -31,9 +30,11 @@ $(function () {
     };
   }
 
-  window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame
-    || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame
-    || function (cb) { setTimeout(cb, 1000 / 30); };
+  window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+    window.webkitRequestAnimationFrame || window.msRequestAnimationFrame ||
+    function (cb) {
+      setTimeout(cb, 1000 / 30);
+    };
 
 
 
@@ -157,31 +158,31 @@ $(function () {
   const BASIC_PIANO_SCALES = {
     // ty https://www.pianoscales.org/
     // major keys
-    "Highlight notes in C Major" : ["C", "D", "E", "F", "G", "A", "B", "C"],
-    "Highlight notes in D Major" : ["D", "E", "G♭", "G", "A", "B", "D♭", "D"],
-    "Highlight notes in E Major" : ["E", "G♭", "A♭", "A", "B", "D♭", "E♭", "E"],
-    "Highlight notes in F Major" : ["F", "G", "A", "B♭", "C", "D", "E", "F"],
-    "Highlight notes in G Major" : ["G", "A", "B", "C", "D", "E", "G♭", "G"],
-    "Highlight notes in A Major" : ["A", "B", "D♭", "D", "E", "G♭", "A♭", "A"],
-    "Highlight notes in B Major" : ["B", "D♭", "E♭", "E", "G♭", "A♭", "B♭", "B"],
-    "Highlight notes in C# / Db Major" : ["D♭", "E♭", "F", "G♭", "A♭", "B♭", "C", "D♭"],
-    "Highlight notes in D# / Eb Major" : ["E♭", "F", "G", "A♭", "B♭", "C", "D", "E♭"],
-    "Highlight notes in F# / Gb Major" : ["G♭", "A♭", "B♭", "B", "D♭", "E♭", "F", "G♭"],
-    "Highlight notes in G# / Ab Major" : ["A♭", "B♭", "C", "D♭", "E♭", "F", "G", "A♭"],
-    "Highlight notes in A# / Bb Major" : ["B♭", "C", "D", "E♭", "F", "G", "A", "B♭"],
+    "Highlight notes in C Major": ["C", "D", "E", "F", "G", "A", "B", "C"],
+    "Highlight notes in D Major": ["D", "E", "G♭", "G", "A", "B", "D♭", "D"],
+    "Highlight notes in E Major": ["E", "G♭", "A♭", "A", "B", "D♭", "E♭", "E"],
+    "Highlight notes in F Major": ["F", "G", "A", "B♭", "C", "D", "E", "F"],
+    "Highlight notes in G Major": ["G", "A", "B", "C", "D", "E", "G♭", "G"],
+    "Highlight notes in A Major": ["A", "B", "D♭", "D", "E", "G♭", "A♭", "A"],
+    "Highlight notes in B Major": ["B", "D♭", "E♭", "E", "G♭", "A♭", "B♭", "B"],
+    "Highlight notes in C# / Db Major": ["D♭", "E♭", "F", "G♭", "A♭", "B♭", "C", "D♭"],
+    "Highlight notes in D# / Eb Major": ["E♭", "F", "G", "A♭", "B♭", "C", "D", "E♭"],
+    "Highlight notes in F# / Gb Major": ["G♭", "A♭", "B♭", "B", "D♭", "E♭", "F", "G♭"],
+    "Highlight notes in G# / Ab Major": ["A♭", "B♭", "C", "D♭", "E♭", "F", "G", "A♭"],
+    "Highlight notes in A# / Bb Major": ["B♭", "C", "D", "E♭", "F", "G", "A", "B♭"],
     // natural minor keys
-    "Highlight notes in A Minor" : ["A", "B", "C", "D", "E", "F", "G", "A"],
-    "Highlight notes in A# / Bb Minor" : ["B♭", "C", "D♭", "E♭", "F", "G♭", "A♭", "B♭"],
-    "Highlight notes in B Minor" : ["B", "D♭", "D", "E", "G♭", "G", "A", "B"],
-    "Highlight notes in C Minor" : ["C", "D", "E♭", "F", "G", "A♭", "B♭", "C"],
-    "Highlight notes in C# / Db Minor" : ["D♭", "E♭", "E", "G♭", "A♭", "A", "B", "D♭"],
-    "Highlight notes in D Minor" : ["D", "E", "F", "G", "A", "B♭", "C", "D"],
-    "Highlight notes in D# / Eb Minor" : ["E♭", "F", "G♭", "A♭", "B♭", "B", "D♭", "E♭"],
-    "Highlight notes in E Minor" : ["E", "G♭", "G", "A", "B", "C", "D", "E"],
-    "Highlight notes in F Minor" : ["F", "G", "A♭", "B♭", "C", "D♭", "E♭", "F"],
-    "Highlight notes in F# / Gb Minor" : ["G♭", "A♭", "A", "B", "D♭", "D", "E", "G♭"],
-    "Highlight notes in G Minor" : ["G", "A", "B♭", "C", "D", "E♭", "F", "G"],
-    "Highlight notes in G# / Ab Minor" : ["A♭", "B♭", "B", "D♭", "E♭", "E", "G♭", "A♭"],
+    "Highlight notes in A Minor": ["A", "B", "C", "D", "E", "F", "G", "A"],
+    "Highlight notes in A# / Bb Minor": ["B♭", "C", "D♭", "E♭", "F", "G♭", "A♭", "B♭"],
+    "Highlight notes in B Minor": ["B", "D♭", "D", "E", "G♭", "G", "A", "B"],
+    "Highlight notes in C Minor": ["C", "D", "E♭", "F", "G", "A♭", "B♭", "C"],
+    "Highlight notes in C# / Db Minor": ["D♭", "E♭", "E", "G♭", "A♭", "A", "B", "D♭"],
+    "Highlight notes in D Minor": ["D", "E", "F", "G", "A", "B♭", "C", "D"],
+    "Highlight notes in D# / Eb Minor": ["E♭", "F", "G♭", "A♭", "B♭", "B", "D♭", "E♭"],
+    "Highlight notes in E Minor": ["E", "G♭", "G", "A", "B", "C", "D", "E"],
+    "Highlight notes in F Minor": ["F", "G", "A♭", "B♭", "C", "D♭", "E♭", "F"],
+    "Highlight notes in F# / Gb Minor": ["G♭", "A♭", "A", "B", "D♭", "D", "E", "G♭"],
+    "Highlight notes in G Minor": ["G", "A", "B♭", "C", "D", "E♭", "F", "G"],
+    "Highlight notes in G# / Ab Minor": ["A♭", "B♭", "B", "D♭", "E♭", "E", "G♭", "A♭"],
   };
 
 
@@ -342,8 +343,7 @@ $(function () {
 
   ////////////////////////////////////////////////////////////////
 
-  var AudioEngine = function () {
-  };
+  var AudioEngine = function () {};
 
   AudioEngine.prototype.init = function (cb) {
     this.volume = 0.6;
@@ -352,14 +352,11 @@ $(function () {
     return this;
   };
 
-  AudioEngine.prototype.load = function (id, url, cb) {
-  };
+  AudioEngine.prototype.load = function (id, url, cb) {};
 
-  AudioEngine.prototype.play = function () {
-  };
+  AudioEngine.prototype.play = function () {};
 
-  AudioEngine.prototype.stop = function () {
-  };
+  AudioEngine.prototype.stop = function () {};
 
   AudioEngine.prototype.setVolume = function (vol) {
     this.volume = vol;
@@ -379,9 +376,9 @@ $(function () {
         if (event.data.args.action == 0) {
           self.actualPlay(event.data.args.id, event.data.args.vol, event.data.args.time, event.data.args.part_id);
         }
-        else {
-          self.actualStop(event.data.args.id, event.data.args.time, event.data.args.part_id);
-        }
+      else {
+        self.actualStop(event.data.args.id, event.data.args.time, event.data.args.part_id);
+      }
     }
   };
 
@@ -390,7 +387,9 @@ $(function () {
   AudioEngineWeb.prototype.init = function (cb) {
     AudioEngine.prototype.init.call(this);
 
-    this.context = new AudioContext({ latencyHint: 'interactive' });
+    this.context = new AudioContext({
+      latencyHint: 'interactive'
+    });
 
     this.masterGain = this.context.createGain();
     this.masterGain.connect(this.context.destination);
@@ -438,8 +437,11 @@ $(function () {
           + " / ArrayBuffer: " + (req.response instanceof ArrayBuffer)
           + " / byteLength: " + (req.response && req.response.byteLength ? req.response.byteLength : "undefined"));*/
         new Notification({
-          id: "audio-download-error", title: "Problem", text: "For some reason, an audio download failed with a status of " + req.status + ". ",
-          target: "#piano", duration: 10000
+          id: "audio-download-error",
+          title: "Problem",
+          text: "For some reason, an audio download failed with a status of " + req.status + ". ",
+          target: "#piano",
+          duration: 10000
         });
       }
     });
@@ -466,7 +468,11 @@ $(function () {
         playing.voice.stop(time);
       }
     }
-    this.playings[id] = { "source": source, "gain": gain, "part_id": part_id };
+    this.playings[id] = {
+      "source": source,
+      "gain": gain,
+      "part_id": part_id
+    };
 
     if (enableSynth) {
       this.playings[id].voice = new synthVoice(id, time);
@@ -479,7 +485,16 @@ $(function () {
     var delay = delay_ms - this.threshold;
     if (delay <= 0) this.actualPlay(id, vol, time, part_id);
     else {
-      this.worker.postMessage({ delay: delay, args: { action: 0/*play*/, id: id, vol: vol, time: time, part_id: part_id } }); // but start scheduling right before play.
+      this.worker.postMessage({
+        delay: delay,
+        args: {
+          action: 0 /*play*/ ,
+          id: id,
+          vol: vol,
+          time: time,
+          part_id: part_id
+        }
+      }); // but start scheduling right before play.
     }
   }
 
@@ -505,7 +520,15 @@ $(function () {
     var delay = delay_ms - this.threshold;
     if (delay <= 0) this.actualStop(id, time, part_id);
     else {
-      this.worker.postMessage({ delay: delay, args: { action: 1/*stop*/, id: id, time: time, part_id: part_id } });
+      this.worker.postMessage({
+        delay: delay,
+        args: {
+          action: 1 /*stop*/ ,
+          id: id,
+          time: time,
+          part_id: part_id
+        }
+      });
     }
   };
 
@@ -548,8 +571,7 @@ $(function () {
 
   ////////////////////////////////////////////////////////////////
 
-  var Renderer = function () {
-  };
+  var Renderer = function () {};
 
   Renderer.prototype.init = function (piano) {
     this.piano = piano;
@@ -560,13 +582,15 @@ $(function () {
   Renderer.prototype.resize = function (width, height) {
     if (typeof width == "undefined") width = $(this.piano.rootElement).width();
     if (typeof height == "undefined") height = Math.floor(width * 0.2);
-    $(this.piano.rootElement).css({ "height": height + "px", marginTop: Math.floor($(window).height() / 2 - height / 2) + "px" });
+    $(this.piano.rootElement).css({
+      "height": height + "px",
+      marginTop: Math.floor($(window).height() / 2 - height / 2) + "px"
+    });
     this.width = width * window.devicePixelRatio;
     this.height = height * window.devicePixelRatio;
   };
 
-  Renderer.prototype.visualize = function (key, color) {
-  };
+  Renderer.prototype.visualize = function (key, color) {};
 
 
 
@@ -765,7 +789,10 @@ $(function () {
 
   CanvasRenderer.prototype.visualize = function (key, color) {
     key.timePlayed = Date.now();
-    key.blips.push({ "time": key.timePlayed, "color": color });
+    key.blips.push({
+      "time": key.timePlayed,
+      "color": color
+    });
   };
 
   CanvasRenderer.prototype.redraw = function () {
@@ -797,8 +824,8 @@ $(function () {
         if (key.timePlayed > timePlayedEnd) {
           y = Math.floor(this.keyMovement - (((now - key.timePlayed) / 100) * this.keyMovement));
         }
-        var x = Math.floor(key.sharp ? this.blackKeyOffset + this.whiteKeyWidth * key.spatial
-          : this.whiteKeyWidth * key.spatial);
+        var x = Math.floor(key.sharp ? this.blackKeyOffset + this.whiteKeyWidth * key.spatial :
+          this.whiteKeyWidth * key.spatial);
         var image = key.sharp ? this.blackKeyRender : this.whiteKeyRender;
         this.ctx.drawImage(image, x, y);
 
@@ -821,7 +848,7 @@ $(function () {
           keyName = keyName.replace("F#", "G♭");
           keyName = keyName.replace("G#", "A♭");
           keyName = keyName.replace("A#", "B♭");
-  
+
           this.ctx.fillText(keyName, x + ((key.sharp ? this.blackKeyWidth : this.whiteKeyWidth) / 2), y + (key.sharp ? this.blackKeyHeight : this.whiteKeyHeight) - 10 - this.ctx.lineWidth);
         }
 
@@ -834,15 +861,15 @@ $(function () {
           keyName = keyName.replace("A#", "B♭");
           const keynameNoOctave = keyName.slice(0, -1);
           if (highlightScale.includes(keynameNoOctave)) {
-              const prev = this.ctx.globalAlpha;
-              this.ctx.globalAlpha = 0.3;
-              this.ctx.fillStyle = "#0f0";
-              if (key.sharp) {
-                  this.ctx.fillRect(x, y, this.blackKeyWidth, this.blackKeyHeight);
-              } else {
-                  this.ctx.fillRect(x, y, this.whiteKeyWidth, this.whiteKeyHeight);
-              }
-              this.ctx.globalAlpha = prev;
+            const prev = this.ctx.globalAlpha;
+            this.ctx.globalAlpha = 0.3;
+            this.ctx.fillStyle = "#0f0";
+            if (key.sharp) {
+              this.ctx.fillRect(x, y, this.blackKeyWidth, this.blackKeyHeight);
+            } else {
+              this.ctx.fillRect(x, y, this.whiteKeyWidth, this.whiteKeyHeight);
+            }
+            this.ctx.globalAlpha = prev;
           }
         }
 
@@ -905,7 +932,10 @@ $(function () {
           v += 0.25;
           v *= DEFAULT_VELOCITY;
           if (v > 1.0) v = 1.0;
-          return { "key": key, "v": v };
+          return {
+            "key": key,
+            "v": v
+          };
         }
       }
     }
@@ -961,12 +991,18 @@ $(function () {
     this.packs = [];
     this.piano = piano;
     this.soundSelection = localStorage.soundSelection ? localStorage.soundSelection : "mppclassic";
-    this.addPack({ name: "MPP Classic", keys: Object.keys(this.piano.keys), ext: ".mp3", url: "/sounds/mppclassic/" });
+    this.addPack({
+      name: "MPP Classic",
+      keys: Object.keys(this.piano.keys),
+      ext: ".mp3",
+      url: "/sounds/mppclassic/"
+    });
   }
 
   SoundSelector.prototype.addPack = function (pack, load) {
     var self = this;
     self.loading[pack.url || pack] = true;
+
     function add(obj) {
       var added = false;
       for (var i = 0; self.packs.length > i; i++) {
@@ -1030,7 +1066,13 @@ $(function () {
         html.appendChild(pack.html);
       }
 
-      self.notification = new Notification({ title: "Sound Selector", html: html, id: "Sound-Selector", duration: -1, target: "#sound-btn" });
+      self.notification = new Notification({
+        title: "Sound Selector",
+        html: html,
+        id: "Sound-Selector",
+        duration: -1,
+        target: "#sound-btn"
+      });
     });
     self.initialized = true;
     self.loadPack(self.soundSelection, true);
@@ -1301,7 +1343,9 @@ $(function () {
         code
       };
     }
-    history.pushState({ "name": "lobby" }, "Piano > lobby", "/");
+    history.pushState({
+      "name": "lobby"
+    }, "Piano > lobby", "/");
     channel_id = "lobby";
   }
   var gClient = new Client('wss://mpp.autoplayer.space');
@@ -1405,7 +1449,7 @@ $(function () {
         part.nameDiv.appendChild(vanishDiv);
       }
       if (part.tag) {
-        if(part.tag.text !== "USER") {
+        if (part.tag.text !== "USER") {
           hasOtherDiv = true;
           var tagDiv = document.createElement("div");
           tagDiv.className = "nametag";
@@ -1491,6 +1535,7 @@ $(function () {
     gClient.on("participant added", function (part) {
       updateLabels(part);
     });
+
     function updateLabels(part) {
       if (part.id === gClient.participantId) {
         $(part.nameDiv).addClass("me");
@@ -1515,10 +1560,11 @@ $(function () {
         $(part.nameDiv).removeClass("muted-chat");
       }
     }
+
     function tagColor(tag) {
       if (typeof tag === 'object') return tag.color;
       if (tag === 'BOT') return '#55f';
-			if (tag === 'NQ') return '#cc6600';
+      if (tag === 'NQ') return '#cc6600';
       if (tag === 'OWNER') return '#a00';
       if (tag === 'ADMIN') return '#f55';
       if (tag === 'MOD') return '#0a0';
@@ -1526,6 +1572,7 @@ $(function () {
       if (tag === 'USER') return '#073763';
       return '#777';
     }
+
     function updateCursor(msg) {
       const part = gClient.ppl[msg.id];
       if (part && part.cursorDiv) {
@@ -1548,7 +1595,10 @@ $(function () {
     var jqcountdown = $('<span></span>').appendTo(jqcrown);
     var countdown_interval;
     jqcrown.click(function () {
-      gClient.sendArray([{ m: "chown", id: gClient.participantId }]);
+      gClient.sendArray([{
+        m: "chown",
+        id: gClient.participantId
+      }]);
     });
     gClient.on("ch", function (msg) {
       if (msg.ch.crown) {
@@ -1559,11 +1609,20 @@ $(function () {
           jqcountdown.text("");
           jqcrown.show();
           if (land_time - Date.now() <= 0) {
-            jqcrown.css({ "left": crown.endPos.x + "%", "top": crown.endPos.y + "%" });
+            jqcrown.css({
+              "left": crown.endPos.x + "%",
+              "top": crown.endPos.y + "%"
+            });
           } else {
-            jqcrown.css({ "left": crown.startPos.x + "%", "top": crown.startPos.y + "%" });
+            jqcrown.css({
+              "left": crown.startPos.x + "%",
+              "top": crown.startPos.y + "%"
+            });
             jqcrown.addClass("spin");
-            jqcrown.animate({ "left": crown.endPos.x + "%", "top": crown.endPos.y + "%" }, 2000, "linear", function () {
+            jqcrown.animate({
+              "left": crown.endPos.x + "%",
+              "top": crown.endPos.y + "%"
+            }, 2000, "linear", function () {
               jqcrown.removeClass("spin");
             });
           }
@@ -1604,13 +1663,12 @@ $(function () {
       var ms = t + (note.d || 0);
       if (ms < 0) {
         ms = 0;
-      }
-      else if (ms > 10000) continue;
+      } else if (ms > 10000) continue;
       if (note.s) {
         gPiano.stop(note.n, participant, ms);
       } else {
         var vel = (typeof note.v !== "undefined") ? parseFloat(note.v) : DEFAULT_VELOCITY;
-				var colora = (typeof note.c !== "undefined")? note.c : undefined;
+        var colora = (typeof note.c !== "undefined") ? note.c : undefined;
         if (!vel) vel = 0;
         else if (vel < 0) vel = 0;
         else if (vel > 1) vel = 1;
@@ -1623,14 +1681,26 @@ $(function () {
   });
 
   // Send cursor updates
-  var mx = 0, last_mx = -10, my = 0, last_my = -10;
+  var mx = 0,
+    last_mx = -10,
+    my = 0,
+    last_my = -10;
   setInterval(function () {
     if (Math.abs(mx - last_mx) > 0.1 || Math.abs(my - last_my) > 0.1) {
       last_mx = mx;
       last_my = my;
-      gClient.sendArray([{ m: "m", x: mx, y: my }]);
+      gClient.sendArray([{
+        m: "m",
+        x: mx,
+        y: my
+      }]);
       if (gSeeOwnCursor) {
-        gClient.emit("m", { m: "m", id: gClient.participantId, x: mx, y: my });
+        gClient.emit("m", {
+          m: "m",
+          id: gClient.participantId,
+          x: mx,
+          y: my
+        });
       }
       var part = gClient.getOwnParticipant();
       if (part) {
@@ -1646,443 +1716,504 @@ $(function () {
 
   // Owner Control button
 
-	let ownerControlNotification;
-	let ipinputsave;
-	let idinputsave;
-	let titleinputsave;
-	let textinputsave;
-	let htmlinputsave;
-	let durationinputsave;
-	let targetinputsave;
-	let classinputsave;
-	$("#owner-btn").on("click", function(evt) {
-		if (ownerControlNotification) {
-			ownerControlNotification.close();
-		} else {
-			const html = document.createElement('p');
-			const p1 = document.createElement('p');
-			const p2 = document.createElement('p');
-			const p3 = document.createElement('p');
-			const p4 = document.createElement('p');
-			const p5 = document.createElement('p');
-			html.appendChild(p1);
-			html.appendChild(p2);
-			html.appendChild(p3);
-			html.appendChild(p4);
-			html.appendChild(p5);
-			p1.textContent = 'Ban a ip: ';
-			const ipInput = document.createElement('input');
-			ipInput.id = 'ipinput';
-			$(ipInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
-			p1.appendChild(ipInput);
-			const ban = document.createElement('button');
-			ban.id = 'banbutton';
-			ban.textContent = 'Ban!';
-			p1.appendChild(ban);
-			const unban = document.createElement('button');
-			unban.id = 'unbanbutton';
-			unban.textContent = 'Unban!';
-			p1.appendChild(unban);
-			ban.addEventListener("click", function(evt) {
-				gClient.sendArray([{"m":"vpadd", "ip": $('#ipinput').val()}])
-			})
-			unban.addEventListener("click", function(evt) {
-				gClient.sendArray([{"m":"vprem", "ip": $('#ipinput').val()}])
-			})
-			p2.textContent = 'Ban a _id: ';
-			const tokenInput = document.createElement('input');
-			tokenInput.id = 'tokenInput';
-			$(tokenInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
-			p2.appendChild(tokenInput);
-			const ban1 = document.createElement('button');
-			ban1.id = 'banbutton1';
-			ban1.textContent = 'Ban!';
-			p2.appendChild(ban1);
-			const unban1 = document.createElement('button');
-			unban1.id = 'unbanbutton1';
-			unban1.textContent = 'Unban!';
-			p2.appendChild(unban1);
-			ban1.addEventListener("click", function(evt) {
-				gClient.sendArray([{"m":"tokadd", "_id": $('#tokenInput').val()}])
-			})
-			unban1.addEventListener("click", function(evt) {
-				gClient.sendArray([{"m":"tokrem", "_id": $('#tokenInput').val()}])
-			})
-			p3.textContent = "Notify: "
-			const room = document.createElement("div");
-			p3.appendChild(room)
-			room.textContent = "Where: "
-			const roomInput = document.createElement('select');
+  let ownerControlNotification;
+  let ipinputsave;
+  let idinputsave;
+  let titleinputsave;
+  let textinputsave;
+  let htmlinputsave;
+  let durationinputsave;
+  let targetinputsave;
+  let classinputsave;
+  $("#owner-btn").on("click", function (evt) {
+    if (ownerControlNotification) {
+      ownerControlNotification.close();
+    } else {
+      const html = document.createElement('p');
+      const p1 = document.createElement('p');
+      const p2 = document.createElement('p');
+      const p3 = document.createElement('p');
+      const p4 = document.createElement('p');
+      const p5 = document.createElement('p');
+      html.appendChild(p1);
+      html.appendChild(p2);
+      html.appendChild(p3);
+      html.appendChild(p4);
+      html.appendChild(p5);
+      p1.textContent = 'Ban a ip: ';
+      const ipInput = document.createElement('input');
+      ipInput.id = 'ipinput';
+      $(ipInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
+      p1.appendChild(ipInput);
+      const ban = document.createElement('button');
+      ban.id = 'banbutton';
+      ban.textContent = 'Ban!';
+      p1.appendChild(ban);
+      const unban = document.createElement('button');
+      unban.id = 'unbanbutton';
+      unban.textContent = 'Unban!';
+      p1.appendChild(unban);
+      ban.addEventListener("click", function (evt) {
+        gClient.sendArray([{
+          "m": "vpadd",
+          "ip": $('#ipinput').val()
+        }])
+      })
+      unban.addEventListener("click", function (evt) {
+        gClient.sendArray([{
+          "m": "vprem",
+          "ip": $('#ipinput').val()
+        }])
+      })
+      p2.textContent = 'Ban a _id: ';
+      const tokenInput = document.createElement('input');
+      tokenInput.id = 'tokenInput';
+      $(tokenInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
+      p2.appendChild(tokenInput);
+      const ban1 = document.createElement('button');
+      ban1.id = 'banbutton1';
+      ban1.textContent = 'Ban!';
+      p2.appendChild(ban1);
+      const unban1 = document.createElement('button');
+      unban1.id = 'unbanbutton1';
+      unban1.textContent = 'Unban!';
+      p2.appendChild(unban1);
+      ban1.addEventListener("click", function (evt) {
+        gClient.sendArray([{
+          "m": "tokadd",
+          "_id": $('#tokenInput').val()
+        }])
+      })
+      unban1.addEventListener("click", function (evt) {
+        gClient.sendArray([{
+          "m": "tokrem",
+          "_id": $('#tokenInput').val()
+        }])
+      })
+      p3.textContent = "Notify: "
+      const room = document.createElement("div");
+      p3.appendChild(room)
+      room.textContent = "Where: "
+      const roomInput = document.createElement('select');
       [{
         id: 'room',
         name: 'room',
-      },{
+      }, {
         id: 'all',
         name: 'all',
       }].forEach(o => {
-          const option = document.createElement("option");
-          option.value = o.id;
-          option.innerHTML = o.name;
-          roomInput.appendChild(option);
+        const option = document.createElement("option");
+        option.value = o.id;
+        option.innerHTML = o.name;
+        roomInput.appendChild(option);
       });
-			roomInput.id = 'roomInput';
-			room.appendChild(roomInput);
-			const title = document.createElement("div");
-			p3.appendChild(title)
-			title.textContent = "Title: "
-			const titleInput = document.createElement('input');
-			titleInput.id = 'titleInput';
-			$(titleInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
-			title.appendChild(titleInput);
-			const text = document.createElement("div");
-			p3.appendChild(text)
-			text.textContent = "Text: "
-			const textInput = document.createElement('input');
-			textInput.id = 'textInput';
-			$(textInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
-			text.appendChild(textInput);
-			const htmlte = document.createElement("div");
-			p3.appendChild(htmlte)
-			htmlte.textContent = "Html: "
-			const htmlInput = document.createElement('input');
-			htmlInput.id = 'htmlInput';
-			$(htmlInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
-			htmlte.appendChild(htmlInput);
-			const duration = document.createElement("div");
-			p3.appendChild(duration)
-			duration.textContent = "Duration: "
-			const durationInput = document.createElement('input');
-			durationInput.id = 'durationInput';
-			$(durationInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
-			duration.appendChild(durationInput);
-			const target = document.createElement("div");
-			p3.appendChild(target)
-			target.textContent = "Target: "
-			const targetInput = document.createElement('input');
-			targetInput.id = 'targetInput';
-			$(targetInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
-			target.appendChild(targetInput);
-			const klass = document.createElement("div");
-			p3.appendChild(klass)
-			klass.textContent = "Class: "
-			const klassInput = document.createElement('input');
-			klassInput.id = 'klassInput';
-			$(klassInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
-			klass.appendChild(klassInput);
-			const sendbutton = document.createElement('button');
-			sendbutton.id = 'notifysend';
-			sendbutton.textContent = 'Send!';
-			klass.appendChild(sendbutton);
-			sendbutton.addEventListener("click", function(evt) {
-				gClient.sendArray([{"m":"notifyall", "room": roomInput.value, "msg": {"title": $('#titleInput').val(), "text": $('#textInput').val(), "html": $('#htmlInput').val(), "duration": $('#durationInput').val(), "target": $('#targetInput').val(), "class": $('#klassInput').val()}}])
-			})
-			p4.textContent = 'Set tag: ';
-			const tag = document.createElement("div");
-			p4.appendChild(tag)
-			tag.textContent = "Tag: "
-			const tagInput = document.createElement('input');
-			tagInput.id = 'tagInput';
-			$(tagInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
-			tag.appendChild(tagInput);
-			const _idtag = document.createElement("div");
-			p4.appendChild(_idtag)
-			_idtag.textContent = "_id: "
-			const _idInput = document.createElement('input');
-			_idInput.id = '_idInput';
-			$(_idInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
-			_idtag.appendChild(_idInput);
-			const settagbtn = document.createElement('button');
-			settagbtn.id = 'settagbtn';
-			settagbtn.textContent = 'Set!';
-			_idtag.appendChild(settagbtn);
-			settagbtn.addEventListener("click", function(evt) {
-				gClient.sendArray([{"m":"settag", "tag": $("#tagInput").val(), "_id": $("#_idInput").val()}])
-			})
-			const stealdiv = document.createElement("div");
-			p5.textContent = "Steal crown: "
-			p5.appendChild(stealdiv)
-			const stealcrown = document.createElement('button');
-			stealcrown.id = 'stealcrownbtn';
-			stealcrown.textContent = 'Steal!';
-			stealdiv.appendChild(stealcrown);
-			stealcrown.addEventListener("click", function(evt) {
-				gClient.sendArray([{"m":"stcrown"}])
-			})
-			$("#ipinput").val = ipinputsave;
-			$("#tokenInput").val = idinputsave;
-			$("#titleInput").val = titleinputsave;
-			$("#textInput").val = textinputsave;
-			$("#htmlInput").val = htmlinputsave;
-			$("#durationInput").val = durationinputsave;
-			$("#targetInput").val = targetinputsave;
-			$("#classInput").val = classinputsave; 
-			ownerControlNotification = new Notification({
-				title: 'Owner Control',
-				duration: -1,
-				target: '#owner-btn',
-				html
-			});	
-			ownerControlNotification.on("close", function() {
-				ipinputsave = $("#ipinput");
-				idinputsave = $("#tokenInput");
-				titleinputsave = $("#titleInput");
-				textinputsave = $("#textInput");
-				htmlinputsave = $("#htmlInput");
-				durationinputsave = $("#durationInput");
-				targetinputsave = $("#targetInput");
-				classinputsave = $("#classInput");
-                ownerControlNotification = null;
-            });
-		}
-	});
-	
+      roomInput.id = 'roomInput';
+      room.appendChild(roomInput);
+      const title = document.createElement("div");
+      p3.appendChild(title)
+      title.textContent = "Title: "
+      const titleInput = document.createElement('input');
+      titleInput.id = 'titleInput';
+      $(titleInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
+      title.appendChild(titleInput);
+      const text = document.createElement("div");
+      p3.appendChild(text)
+      text.textContent = "Text: "
+      const textInput = document.createElement('input');
+      textInput.id = 'textInput';
+      $(textInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
+      text.appendChild(textInput);
+      const htmlte = document.createElement("div");
+      p3.appendChild(htmlte)
+      htmlte.textContent = "Html: "
+      const htmlInput = document.createElement('input');
+      htmlInput.id = 'htmlInput';
+      $(htmlInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
+      htmlte.appendChild(htmlInput);
+      const duration = document.createElement("div");
+      p3.appendChild(duration)
+      duration.textContent = "Duration: "
+      const durationInput = document.createElement('input');
+      durationInput.id = 'durationInput';
+      $(durationInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
+      duration.appendChild(durationInput);
+      const target = document.createElement("div");
+      p3.appendChild(target)
+      target.textContent = "Target: "
+      const targetInput = document.createElement('input');
+      targetInput.id = 'targetInput';
+      $(targetInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
+      target.appendChild(targetInput);
+      const klass = document.createElement("div");
+      p3.appendChild(klass)
+      klass.textContent = "Class: "
+      const klassInput = document.createElement('input');
+      klassInput.id = 'klassInput';
+      $(klassInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
+      klass.appendChild(klassInput);
+      const sendbutton = document.createElement('button');
+      sendbutton.id = 'notifysend';
+      sendbutton.textContent = 'Send!';
+      klass.appendChild(sendbutton);
+      sendbutton.addEventListener("click", function (evt) {
+        gClient.sendArray([{
+          "m": "notifyall",
+          "room": roomInput.value,
+          "msg": {
+            "title": $('#titleInput').val(),
+            "text": $('#textInput').val(),
+            "html": $('#htmlInput').val(),
+            "duration": $('#durationInput').val(),
+            "target": $('#targetInput').val(),
+            "class": $('#klassInput').val()
+          }
+        }])
+      })
+      p4.textContent = 'Set tag: ';
+      const tag = document.createElement("div");
+      p4.appendChild(tag)
+      tag.textContent = "Tag: "
+      const tagInput = document.createElement('input');
+      tagInput.id = 'tagInput';
+      $(tagInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
+      tag.appendChild(tagInput);
+      const _idtag = document.createElement("div");
+      p4.appendChild(_idtag)
+      _idtag.textContent = "_id: "
+      const _idInput = document.createElement('input');
+      _idInput.id = '_idInput';
+      $(_idInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
+      _idtag.appendChild(_idInput);
+      const settagbtn = document.createElement('button');
+      settagbtn.id = 'settagbtn';
+      settagbtn.textContent = 'Set!';
+      _idtag.appendChild(settagbtn);
+      settagbtn.addEventListener("click", function (evt) {
+        gClient.sendArray([{
+          "m": "settag",
+          "tag": $("#tagInput").val(),
+          "_id": $("#_idInput").val()
+        }])
+      })
+      const stealdiv = document.createElement("div");
+      p5.textContent = "Steal crown: "
+      p5.appendChild(stealdiv)
+      const stealcrown = document.createElement('button');
+      stealcrown.id = 'stealcrownbtn';
+      stealcrown.textContent = 'Steal!';
+      stealdiv.appendChild(stealcrown);
+      stealcrown.addEventListener("click", function (evt) {
+        gClient.sendArray([{
+          "m": "stcrown"
+        }])
+      })
+      $("#ipinput").val = ipinputsave;
+      $("#tokenInput").val = idinputsave;
+      $("#titleInput").val = titleinputsave;
+      $("#textInput").val = textinputsave;
+      $("#htmlInput").val = htmlinputsave;
+      $("#durationInput").val = durationinputsave;
+      $("#targetInput").val = targetinputsave;
+      $("#classInput").val = classinputsave;
+      ownerControlNotification = new Notification({
+        title: 'Owner Control',
+        duration: -1,
+        target: '#owner-btn',
+        html
+      });
+      ownerControlNotification.on("close", function () {
+        ipinputsave = $("#ipinput");
+        idinputsave = $("#tokenInput");
+        titleinputsave = $("#titleInput");
+        textinputsave = $("#textInput");
+        htmlinputsave = $("#htmlInput");
+        durationinputsave = $("#durationInput");
+        targetinputsave = $("#targetInput");
+        classinputsave = $("#classInput");
+        ownerControlNotification = null;
+      });
+    }
+  });
+
 
   //H Admin Control button 
-	let hadminControlNotification;
-	$("#hadmin-btn").on("click", function(evt) {
-		if (hadminControlNotification) {
-			hadminControlNotification.close();
-		} else {
-			const html = document.createElement('p');
-			const p2 = document.createElement('p');
-			const p3 = document.createElement('p');
-			const p5 = document.createElement('p');
-			const p6 = document.createElement('p');
-			html.appendChild(p2);
-			html.appendChild(p3);
-			html.appendChild(p5);
-			html.appendChild(p6);
-			p2.textContent = 'Ban a _id: ';
-			const tokenInput = document.createElement('input');
-			tokenInput.id = 'tokenInput';
-			$(tokenInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
-			p2.appendChild(tokenInput);
-			const ban1 = document.createElement('button');
-			ban1.id = 'banbutton1';
-			ban1.textContent = 'Ban!';
-			p2.appendChild(ban1);
-			const unban1 = document.createElement('button');
-			unban1.id = 'unbanbutton1';
-			unban1.textContent = 'Unban!';
-			p2.appendChild(unban1);
-			ban1.addEventListener("click", function(evt) {
-				gClient.sendArray([{"m":"tokadd", "_id": $('#tokenInput').val()}])
-			})
-			unban1.addEventListener("click", function(evt) {
-				gClient.sendArray([{"m":"tokrem", "_id": $('#tokenInput').val()}])
-			})
-			p3.textContent = "Notify: "
-			const room = document.createElement("div");
-			p3.appendChild(room)
-			room.textContent = "Where: "
-			const roomInput = document.createElement('select');
+  let hadminControlNotification;
+  $("#hadmin-btn").on("click", function (evt) {
+    if (hadminControlNotification) {
+      hadminControlNotification.close();
+    } else {
+      const html = document.createElement('p');
+      const p2 = document.createElement('p');
+      const p3 = document.createElement('p');
+      const p5 = document.createElement('p');
+      const p6 = document.createElement('p');
+      html.appendChild(p2);
+      html.appendChild(p3);
+      html.appendChild(p5);
+      html.appendChild(p6);
+      p2.textContent = 'Ban a _id: ';
+      const tokenInput = document.createElement('input');
+      tokenInput.id = 'tokenInput';
+      $(tokenInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
+      p2.appendChild(tokenInput);
+      const ban1 = document.createElement('button');
+      ban1.id = 'banbutton1';
+      ban1.textContent = 'Ban!';
+      p2.appendChild(ban1);
+      const unban1 = document.createElement('button');
+      unban1.id = 'unbanbutton1';
+      unban1.textContent = 'Unban!';
+      p2.appendChild(unban1);
+      ban1.addEventListener("click", function (evt) {
+        gClient.sendArray([{
+          "m": "tokadd",
+          "_id": $('#tokenInput').val()
+        }])
+      })
+      unban1.addEventListener("click", function (evt) {
+        gClient.sendArray([{
+          "m": "tokrem",
+          "_id": $('#tokenInput').val()
+        }])
+      })
+      p3.textContent = "Notify: "
+      const room = document.createElement("div");
+      p3.appendChild(room)
+      room.textContent = "Where: "
+      const roomInput = document.createElement('select');
       [{
         id: 'room',
         name: 'room',
-      },{
+      }, {
         id: 'all',
         name: 'all',
       }].forEach(o => {
-          const option = document.createElement("option");
-          option.value = o.id;
-          option.innerHTML = o.name;
-          roomInput.appendChild(option);
+        const option = document.createElement("option");
+        option.value = o.id;
+        option.innerHTML = o.name;
+        roomInput.appendChild(option);
       });
-			roomInput.id = 'roomInput';
-			room.appendChild(roomInput);
-			const title = document.createElement("div");
-			p3.appendChild(title)
-			title.textContent = "Title: "
-			const titleInput = document.createElement('input');
-			titleInput.id = 'titleInput';
-			$(titleInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
-			title.appendChild(titleInput);
-			const text = document.createElement("div");
-			p3.appendChild(text)
-			text.textContent = "Text: "
-			const textInput = document.createElement('input');
-			textInput.id = 'textInput';
-			$(textInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
-			text.appendChild(textInput);
-			const htmlte = document.createElement("div");
-			p3.appendChild(htmlte)
-			htmlte.textContent = "Html: "
-			const htmlInput = document.createElement('input');
-			htmlInput.id = 'htmlInput';
-			$(htmlInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
-			htmlte.appendChild(htmlInput);
-			const duration = document.createElement("div");
-			p3.appendChild(duration)
-			duration.textContent = "Duration: "
-			const durationInput = document.createElement('input');
-			durationInput.id = 'durationInput';
-			$(durationInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
-			duration.appendChild(durationInput);
-			const target = document.createElement("div");
-			p3.appendChild(target)
-			target.textContent = "Target: "
-			const targetInput = document.createElement('input');
-			targetInput.id = 'targetInput';
-			$(targetInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
-			target.appendChild(targetInput);
-			const klass = document.createElement("div");
-			p3.appendChild(klass)
-			klass.textContent = "Class: "
-			const klassInput = document.createElement('input');
-			klassInput.id = 'klassInput';
-			$(klassInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
-			klass.appendChild(klassInput);
-			const sendbutton = document.createElement('button');
-			sendbutton.id = 'notifysend';
-			sendbutton.textContent = 'Send!';
-			klass.appendChild(sendbutton);
-			const stealdiv = document.createElement("div");
-			p5.textContent = "Steal crown: "
-			p5.appendChild(stealdiv)
-			const stealcrown = document.createElement('button');
-			stealcrown.id = 'stealcrownbtn';
-			stealcrown.textContent = 'Steal!';
-			stealdiv.appendChild(stealcrown);
-			stealcrown.addEventListener("click", function(evt) {
-				gClient.sendArray([{"m":"stcrown"}])
-			})
+      roomInput.id = 'roomInput';
+      room.appendChild(roomInput);
+      const title = document.createElement("div");
+      p3.appendChild(title)
+      title.textContent = "Title: "
+      const titleInput = document.createElement('input');
+      titleInput.id = 'titleInput';
+      $(titleInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
+      title.appendChild(titleInput);
+      const text = document.createElement("div");
+      p3.appendChild(text)
+      text.textContent = "Text: "
+      const textInput = document.createElement('input');
+      textInput.id = 'textInput';
+      $(textInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
+      text.appendChild(textInput);
+      const htmlte = document.createElement("div");
+      p3.appendChild(htmlte)
+      htmlte.textContent = "Html: "
+      const htmlInput = document.createElement('input');
+      htmlInput.id = 'htmlInput';
+      $(htmlInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
+      htmlte.appendChild(htmlInput);
+      const duration = document.createElement("div");
+      p3.appendChild(duration)
+      duration.textContent = "Duration: "
+      const durationInput = document.createElement('input');
+      durationInput.id = 'durationInput';
+      $(durationInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
+      duration.appendChild(durationInput);
+      const target = document.createElement("div");
+      p3.appendChild(target)
+      target.textContent = "Target: "
+      const targetInput = document.createElement('input');
+      targetInput.id = 'targetInput';
+      $(targetInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
+      target.appendChild(targetInput);
+      const klass = document.createElement("div");
+      p3.appendChild(klass)
+      klass.textContent = "Class: "
+      const klassInput = document.createElement('input');
+      klassInput.id = 'klassInput';
+      $(klassInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
+      klass.appendChild(klassInput);
+      const sendbutton = document.createElement('button');
+      sendbutton.id = 'notifysend';
+      sendbutton.textContent = 'Send!';
+      klass.appendChild(sendbutton);
+      const stealdiv = document.createElement("div");
+      p5.textContent = "Steal crown: "
+      p5.appendChild(stealdiv)
+      const stealcrown = document.createElement('button');
+      stealcrown.id = 'stealcrownbtn';
+      stealcrown.textContent = 'Steal!';
+      stealdiv.appendChild(stealcrown);
+      stealcrown.addEventListener("click", function (evt) {
+        gClient.sendArray([{
+          "m": "stcrown"
+        }])
+      })
       const reloaddiv = document.createElement("div");
-			p6.textContent = "Reload server: "
-			p6.appendChild(reloaddiv)
-			const reloadcrown = document.createElement('button');
-			reloadcrown.id = 'reloadcrownbtn';
-			reloadcrown.textContent = 'Reload!';
-			reloaddiv.appendChild(reloadcrown);
-			reloadcrown.addEventListener("click", function(evt) {
-				gClient.sendArray([{"m":"reloadserv"}])
-			})
-			sendbutton.addEventListener("click", function(evt) {
-				gClient.sendArray([{"m":"notifyall", "room": roomInput.value, "msg": {"title": $('#titleInput').val(), "text": $('#textInput').val(), "html": $('#htmlInput').val(), "duration": $('#durationInput').val(), "target": $('#targetInput').val(), "class": $('#klassInput').val()}}])
-			})
-			$("#titleInput").val = titleinputsave;
-			$("#textInput").val = textinputsave;
-			$("#htmlInput").val = htmlinputsave;
-			$("#durationInput").val = durationinputsave;
-			$("#targetInput").val = targetinputsave;
-			$("#classInput").val = classinputsave; 
-			hadminControlNotification = new Notification({
-				title: 'Admin Control',
-				duration: -1,
-				target: '#hadmin-btn',
-				html
-			});	
-			hadminControlNotification.on("close", function() {
-				titleinputsave = $("#titleInput");
-				textinputsave = $("#textInput");
-				htmlinputsave = $("#htmlInput");
-				durationinputsave = $("#durationInput");
-				targetinputsave = $("#targetInput");
-				classinputsave = $("#classInput");
+      p6.textContent = "Reload server: "
+      p6.appendChild(reloaddiv)
+      const reloadcrown = document.createElement('button');
+      reloadcrown.id = 'reloadcrownbtn';
+      reloadcrown.textContent = 'Reload!';
+      reloaddiv.appendChild(reloadcrown);
+      reloadcrown.addEventListener("click", function (evt) {
+        gClient.sendArray([{
+          "m": "reloadserv"
+        }])
+      })
+      sendbutton.addEventListener("click", function (evt) {
+        gClient.sendArray([{
+          "m": "notifyall",
+          "room": roomInput.value,
+          "msg": {
+            "title": $('#titleInput').val(),
+            "text": $('#textInput').val(),
+            "html": $('#htmlInput').val(),
+            "duration": $('#durationInput').val(),
+            "target": $('#targetInput').val(),
+            "class": $('#klassInput').val()
+          }
+        }])
+      })
+      $("#titleInput").val = titleinputsave;
+      $("#textInput").val = textinputsave;
+      $("#htmlInput").val = htmlinputsave;
+      $("#durationInput").val = durationinputsave;
+      $("#targetInput").val = targetinputsave;
+      $("#classInput").val = classinputsave;
+      hadminControlNotification = new Notification({
+        title: 'Admin Control',
+        duration: -1,
+        target: '#hadmin-btn',
+        html
+      });
+      hadminControlNotification.on("close", function () {
+        titleinputsave = $("#titleInput");
+        textinputsave = $("#textInput");
+        htmlinputsave = $("#htmlInput");
+        durationinputsave = $("#durationInput");
+        targetinputsave = $("#targetInput");
+        classinputsave = $("#classInput");
         hadminControlNotification = null;
       });
-		}
-	});
+    }
+  });
 
-	// Admin Control button
-	let adminControlNotification;
-	$("#admin-btn").on("click", function(evt) {
-		if (adminControlNotification) {
-			adminControlNotification.close();
-		} else {
-			const html = document.createElement('p');
-			const p3 = document.createElement('p');
-			html.appendChild(p3);
-			p3.textContent = "Notify: "
-			const room = document.createElement("div");
-			p3.appendChild(room)
-			room.textContent = "Where: "
-			const roomInput = document.createElement('select');
+  // Admin Control button
+  let adminControlNotification;
+  $("#admin-btn").on("click", function (evt) {
+    if (adminControlNotification) {
+      adminControlNotification.close();
+    } else {
+      const html = document.createElement('p');
+      const p3 = document.createElement('p');
+      html.appendChild(p3);
+      p3.textContent = "Notify: "
+      const room = document.createElement("div");
+      p3.appendChild(room)
+      room.textContent = "Where: "
+      const roomInput = document.createElement('select');
       [{
         id: 'room',
         name: 'room',
-      },{
+      }, {
         id: 'all',
         name: 'all',
       }].forEach(o => {
-          const option = document.createElement("option");
-          option.value = o.id;
-          option.innerHTML = o.name;
-          roomInput.appendChild(option);
+        const option = document.createElement("option");
+        option.value = o.id;
+        option.innerHTML = o.name;
+        roomInput.appendChild(option);
       });
-			roomInput.id = 'roomInput';
-			room.appendChild(roomInput);
-			const title = document.createElement("div");
-			p3.appendChild(title)
-			title.textContent = "Title: "
-			const titleInput = document.createElement('input');
-			titleInput.id = 'titleInput';
-			$(titleInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
-			title.appendChild(titleInput);
-			const text = document.createElement("div");
-			p3.appendChild(text)
-			text.textContent = "Text: "
-			const textInput = document.createElement('input');
-			textInput.id = 'textInput';
-			$(textInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
-			text.appendChild(textInput);
-			const htmlte = document.createElement("div");
-			p3.appendChild(htmlte)
-			htmlte.textContent = "Html: "
-			const htmlInput = document.createElement('input');
-			htmlInput.id = 'htmlInput';
-			$(htmlInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
-			htmlte.appendChild(htmlInput);
-			const duration = document.createElement("div");
-			p3.appendChild(duration)
-			duration.textContent = "Duration: "
-			const durationInput = document.createElement('input');
-			durationInput.id = 'durationInput';
-			$(durationInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
-			duration.appendChild(durationInput);
-			const target = document.createElement("div");
-			p3.appendChild(target)
-			target.textContent = "Target: "
-			const targetInput = document.createElement('input');
-			targetInput.id = 'targetInput';
-			$(targetInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
-			target.appendChild(targetInput);
-			const klass = document.createElement("div");
-			p3.appendChild(klass)
-			klass.textContent = "Class: "
-			const klassInput = document.createElement('input');
-			klassInput.id = 'klassInput';
-			$(klassInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
-			klass.appendChild(klassInput);
-			const sendbutton = document.createElement('button');
-			sendbutton.id = 'notifysend';
-			sendbutton.textContent = 'Send!';
-			klass.appendChild(sendbutton);
-			sendbutton.addEventListener("click", function(evt) {
-				gClient.sendArray([{"m":"notifyall", "room": roomInput.value, "msg": {"title": $('#titleInput').val(), "text": $('#textInput').val(), "html": $('#htmlInput').val(), "duration": $('#durationInput').val(), "target": $('#targetInput').val(), "class": $('#klassInput').val()}}])
-			})
-			$("#titleInput").val = titleinputsave;
-			$("#textInput").val = textinputsave;
-			$("#htmlInput").val = htmlinputsave;
-			$("#durationInput").val = durationinputsave;
-			$("#targetInput").val = targetinputsave;
-			$("#classInput").val = classinputsave; 
-			adminControlNotification = new Notification({
-				title: 'Admin Control',
-				duration: -1,
-				target: '#admin-btn',
-				html
-			});	
-			adminControlNotification.on("close", function() {
-				titleinputsave = $("#titleInput");
-				textinputsave = $("#textInput");
-				htmlinputsave = $("#htmlInput");
-				durationinputsave = $("#durationInput");
-				targetinputsave = $("#targetInput");
-				classinputsave = $("#classInput");
-                adminControlNotification = null;
-            });
-		}
-	});
+      roomInput.id = 'roomInput';
+      room.appendChild(roomInput);
+      const title = document.createElement("div");
+      p3.appendChild(title)
+      title.textContent = "Title: "
+      const titleInput = document.createElement('input');
+      titleInput.id = 'titleInput';
+      $(titleInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
+      title.appendChild(titleInput);
+      const text = document.createElement("div");
+      p3.appendChild(text)
+      text.textContent = "Text: "
+      const textInput = document.createElement('input');
+      textInput.id = 'textInput';
+      $(textInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
+      text.appendChild(textInput);
+      const htmlte = document.createElement("div");
+      p3.appendChild(htmlte)
+      htmlte.textContent = "Html: "
+      const htmlInput = document.createElement('input');
+      htmlInput.id = 'htmlInput';
+      $(htmlInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
+      htmlte.appendChild(htmlInput);
+      const duration = document.createElement("div");
+      p3.appendChild(duration)
+      duration.textContent = "Duration: "
+      const durationInput = document.createElement('input');
+      durationInput.id = 'durationInput';
+      $(durationInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
+      duration.appendChild(durationInput);
+      const target = document.createElement("div");
+      p3.appendChild(target)
+      target.textContent = "Target: "
+      const targetInput = document.createElement('input');
+      targetInput.id = 'targetInput';
+      $(targetInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
+      target.appendChild(targetInput);
+      const klass = document.createElement("div");
+      p3.appendChild(klass)
+      klass.textContent = "Class: "
+      const klassInput = document.createElement('input');
+      klassInput.id = 'klassInput';
+      $(klassInput).on('focus', releaseKeyboard).on('blur', captureKeyboard);
+      klass.appendChild(klassInput);
+      const sendbutton = document.createElement('button');
+      sendbutton.id = 'notifysend';
+      sendbutton.textContent = 'Send!';
+      klass.appendChild(sendbutton);
+      sendbutton.addEventListener("click", function (evt) {
+        gClient.sendArray([{
+          "m": "notifyall",
+          "room": roomInput.value,
+          "msg": {
+            "title": $('#titleInput').val(),
+            "text": $('#textInput').val(),
+            "html": $('#htmlInput').val(),
+            "duration": $('#durationInput').val(),
+            "target": $('#targetInput').val(),
+            "class": $('#klassInput').val()
+          }
+        }])
+      })
+      $("#titleInput").val = titleinputsave;
+      $("#textInput").val = textinputsave;
+      $("#htmlInput").val = htmlinputsave;
+      $("#durationInput").val = durationinputsave;
+      $("#targetInput").val = targetinputsave;
+      $("#classInput").val = classinputsave;
+      adminControlNotification = new Notification({
+        title: 'Admin Control',
+        duration: -1,
+        target: '#admin-btn',
+        html
+      });
+      adminControlNotification.on("close", function () {
+        titleinputsave = $("#titleInput");
+        textinputsave = $("#textInput");
+        htmlinputsave = $("#htmlInput");
+        durationinputsave = $("#durationInput");
+        targetinputsave = $("#targetInput");
+        classinputsave = $("#classInput");
+        adminControlNotification = null;
+      });
+    }
+  });
 
   // Room settings button
   (function () {
@@ -2109,7 +2240,7 @@ $(function () {
           $("#room-settings .checkbox[name=nocussing]").prop("checked", settings["no cussing"]);
           $("#room-settings input[name=color]").val(settings.color);
           $("#room-settings input[name=color2]").val(settings.color2);
-					$("#room-settings input[name=max]").val(settings.max);
+          $("#room-settings input[name=max]").val(settings.max);
         }, 100);
       }
     });
@@ -2121,7 +2252,7 @@ $(function () {
         "no cussing": $("#room-settings .checkbox[name=nocussing]").is(":checked"),
         color: $("#room-settings input[name=color]").val(),
         color2: $("#room-settings input[name=color2]").val(),
-				max: Number($("#room-settings input[name=max]").val())
+        max: Number($("#room-settings input[name=max]").val())
       };
       gClient.setChannelSettings(settings);
       closeModal();
@@ -2129,23 +2260,33 @@ $(function () {
     $("#room-settings .drop-crown").click(function () {
       closeModal();
       if (confirm("This will drop the crown...!"))
-        gClient.sendArray([{ m: "chown" }]);
+        gClient.sendArray([{
+          m: "chown"
+        }]);
     });
   })();
 
   // Clear chat button
   $("#clearchat-btn").click(function (evt) {
-    gClient.sendArray([{ m: 'clearchat' }]);
+    gClient.sendArray([{
+      m: 'clearchat'
+    }]);
   });
 
   // Get crown button
   $("#getcrown-btn").click(function (evt) {
-    gClient.sendArray([{ m: 'chown', id: MPP.client.getOwnParticipant().id }]);
+    gClient.sendArray([{
+      m: 'chown',
+      id: MPP.client.getOwnParticipant().id
+    }]);
   });
 
   // Vanish or unvanish button
   $("#vanish-btn").click(function (evt) {
-    gClient.sendArray([{ m: 'v', vanish: !gClient.getOwnParticipant().vanished }]);
+    gClient.sendArray([{
+      m: 'v',
+      vanish: !gClient.getOwnParticipant().vanished
+    }]);
   });
   gClient.on('participant update', part => {
     if (part._id === gClient.getOwnParticipant()._id) {
@@ -2256,6 +2397,7 @@ $(function () {
   (function () {
     var old_color1 = new Color("#000000");
     var old_color2 = new Color("#000000");
+
     function setColor(hex, hex2) {
       var color1 = new Color(hex);
       var color2 = new Color(hex2 || hex);
@@ -2344,7 +2486,12 @@ $(function () {
 
 
 
-  var n = function (a, b) { return { note: new Note(a, b), held: false }; };
+  var n = function (a, b) {
+    return {
+      note: new Note(a, b),
+      held: false
+    };
+  };
 
   var layouts = {
     MPP: {
@@ -2464,8 +2611,7 @@ $(function () {
         var index = Object.keys(gPiano.keys).indexOf(note);
         if (gVirtualPianoLayout && evt.shiftKey) {
           note = Object.keys(gPiano.keys)[index + transpose + 1];
-        }
-        else note = Object.keys(gPiano.keys)[index + transpose];
+        } else note = Object.keys(gPiano.keys)[index + transpose];
         if (note === undefined) return;
         var vol = velocityFromMouseY();
         press(note, vol);
@@ -2534,8 +2680,7 @@ $(function () {
         var index = Object.keys(gPiano.keys).indexOf(note);
         if (gVirtualPianoLayout && evt.shiftKey) {
           note = Object.keys(gPiano.keys)[index + transpose + 1];
-        }
-        else note = Object.keys(gPiano.keys)[index + transpose];
+        } else note = Object.keys(gPiano.keys)[index + transpose];
         if (note === undefined) return;
         release(note);
       }
@@ -2613,7 +2758,9 @@ $(function () {
       if (rat <= last_rat)
         nqjq.stop(true, true).css("width", rat.toFixed(0) + "%");
       else
-        nqjq.stop(true, true).animate({ "width": rat.toFixed(0) + "%" }, 2000, "linear");
+        nqjq.stop(true, true).animate({
+          "width": rat.toFixed(0) + "%"
+        }, 2000, "linear");
       last_rat = rat;
     });
   })();
@@ -2631,6 +2778,16 @@ $(function () {
   gClient.on('participant removed', part => {
     if (gIsDming && part._id === gDmParticipant._id) {
       gIsDming = false;
+      $('#chat-input')[0].placeholder = 'You can chat with this thing.';
+    }
+  });
+
+  //Reply Message
+  let gIsReplyingTo = '';
+  let gKnowsHowToReply = localStorage.knowsHowToReply === "true";
+  gClient.on('participant removed', part => {
+    if (gIsReplyingTo.length > 0) {
+      gIsReplyingTo = '';
       $('#chat-input')[0].placeholder = 'You can chat with this thing.';
     }
   });
@@ -2769,6 +2926,9 @@ $(function () {
       } else {
         $('<div class="menu-item">Direct Message</div>').appendTo(menu)
           .on("mousedown touchstart", function (evt) {
+            if (gIsReplyingTo.length > 0) {
+              gIsReplyingTo = '';
+            }
             if (!gKnowsHowToDm) {
               localStorage.knowsHowToDm = true;
               gKnowsHowToDm = true;
@@ -2798,7 +2958,10 @@ $(function () {
           $('<div class="menu-item give-crown">Give Crown</div>').appendTo(menu)
             .on("mousedown touchstart", function (evt) {
               if (confirm("Give room ownership to " + part.name + "?"))
-                gClient.sendArray([{ m: "chown", id: part.id }]);
+                gClient.sendArray([{
+                  m: "chown",
+                  id: part.id
+                }]);
             });
         }
         $('<div class="menu-item kickban">Kickban</div>').appendTo(menu)
@@ -2807,7 +2970,11 @@ $(function () {
             if (minutes === null) return;
             minutes = parseFloat(minutes) || 0;
             var ms = minutes * 60 * 1000;
-            gClient.sendArray([{ m: "kickban", _id: part._id, ms: ms }]);
+            gClient.sendArray([{
+              m: "kickban",
+              _id: part._id,
+              ms: ms
+            }]);
           });
       }
       if (gClient.permissions.siteBan) {
@@ -2837,7 +3004,11 @@ $(function () {
           .on("mousedown touchstart", function (evt) {
             var color = prompt("What color?", part.color);
             if (color === null) return;
-            gClient.sendArray([{ m: "setcolor", _id: part._id, color: color }]);
+            gClient.sendArray([{
+              m: "setcolor",
+              _id: part._id,
+              color: color
+            }]);
           });
       }
       if (gClient.permissions.usersetOthers) {
@@ -2845,7 +3016,11 @@ $(function () {
           .on("mousedown touchstart", function (evt) {
             var name = prompt("What name?", part.name);
             if (name === null) return;
-            gClient.sendArray([{ m: "setname", _id: part._id, name: name }]);
+            gClient.sendArray([{
+              m: "setname",
+              _id: part._id,
+              name: name
+            }]);
           });
       }
       menu.fadeIn(100);
@@ -2935,7 +3110,10 @@ $(function () {
       x -= ((x + width) - $("body").width());
     }
     if (x < 0) x = 0;
-    this.domElement.offset({ left: x, top: y });
+    this.domElement.offset({
+      left: x,
+      top: y
+    });
   };
 
   Notification.prototype.close = function () {
@@ -2972,7 +3150,9 @@ $(function () {
     window.gKnowsYouCanUseKeyboardTimeout = setTimeout(function () {
       window.gKnowsYouCanUseKeyboardNotification = new Notification({
         title: "Did you know!?!",
-        text: "You can play the piano with your keyboard, too.  Try it!", target: "#piano", duration: 10000
+        text: "You can play the piano with your keyboard, too.  Try it!",
+        target: "#piano",
+        duration: 10000
       });
     }, 30000);
   }
@@ -2986,12 +3166,10 @@ $(function () {
       volume_slider.value = localStorage.volume;
       gPiano.audio.setVolume(localStorage.volume);
       $("#volume-label").text("Volume: " + Math.floor(gPiano.audio.volume * 100) + "%");
-    }
-    else localStorage.volume = gPiano.audio.volume;
+    } else localStorage.volume = gPiano.audio.volume;
 
     window.gHasBeenHereBefore = (localStorage.gHasBeenHereBefore || false);
-    if (gHasBeenHereBefore) {
-    }
+    if (gHasBeenHereBefore) {}
     localStorage.gHasBeenHereBefore = true;
 
   }
@@ -3089,12 +3267,16 @@ $(function () {
       if ($(evt.target).is("#room .more")) return;
       $(document).off("mousedown", doc_click);
       $("#room .more").fadeOut(250);
-      gClient.sendArray([{ m: "-ls" }]);
+      gClient.sendArray([{
+        m: "-ls"
+      }]);
     }
     $(document).on("mousedown", doc_click);
     $("#room .more .info").remove();
     $("#room .more").show();
-    gClient.sendArray([{ m: "+ls" }]);
+    gClient.sendArray([{
+      m: "+ls"
+    }]);
   });
   $("#new-room-btn").on("click", function (evt) {
     evt.stopPropagation();
@@ -3105,9 +3287,16 @@ $(function () {
   $("#play-alone-btn").on("click", function (evt) {
     evt.stopPropagation();
     var room_name = "Room" + Math.floor(Math.random() * 1000000000000);
-    changeRoom(room_name, "right", { "visible": false });
+    changeRoom(room_name, "right", {
+      "visible": false
+    });
     setTimeout(function () {
-      new Notification({ id: "share", title: "Playing alone", html: 'You are playing alone in a room by yourself, but you can always invite friends by sending them the link.<br><a href="' + location.href + '">' + decodeURIComponent(location.href) + '</a>', duration: 25000 });
+      new Notification({
+        id: "share",
+        title: "Playing alone",
+        html: 'You are playing alone in a room by yourself, but you can always invite friends by sending them the link.<br><a href="' + location.href + '">' + decodeURIComponent(location.href) + '</a>',
+        duration: 25000
+      });
     }, 1000);
   });
 
@@ -3159,7 +3348,12 @@ $(function () {
       closeModal();
       changeRoom(name, "right", settings);
       setTimeout(function () {
-        new Notification({ id: "share", title: "Created a Room", html: 'You can invite friends to your room by sending them the link.<br><a href="' + location.href + '">' + decodeURIComponent(location.href) + '</a>', duration: 25000 });
+        new Notification({
+          id: "share",
+          title: "Created a Room",
+          html: 'You can invite friends to your room by sending them the link.<br><a href="' + location.href + '">' + decodeURIComponent(location.href) + '</a>',
+          duration: 25000
+        });
       }, 1000);
     };
     $("#new-room .submit").click(function (evt) {
@@ -3197,7 +3391,10 @@ $(function () {
     if (push) {
       var url = "/?c=" + encodeURIComponent(name).replace("'", "%27");
       if (window.history && history.pushState) {
-        history.pushState({ "depth": gHistoryDepth += 1, "name": name }, "Piano > " + name, url);
+        history.pushState({
+          "depth": gHistoryDepth += 1,
+          "name": name
+        }, "Piano > " + name, url);
       } else {
         window.location = url;
         return;
@@ -3206,7 +3403,8 @@ $(function () {
 
     gClient.setChannel(name, settings);
 
-    var t = 0, d = 100;
+    var t = 0,
+      d = 100;
     $("#piano").addClass("ease-out").addClass("slide-" + opposite);
     setTimeout(function () {
       $("#piano").removeClass("ease-out").removeClass("slide-" + opposite).addClass("slide-" + direction);
@@ -3263,7 +3461,10 @@ $(function () {
       };
       //$("#rename .text[name=name]").val("");
       closeModal();
-      gClient.sendArray([{ m: "userset", set: set }]);
+      gClient.sendArray([{
+        m: "userset",
+        set: set
+      }]);
     };
     $("#rename .submit").click(function (evt) {
       submit();
@@ -3293,7 +3494,9 @@ $(function () {
   //site-wide bans
   (function () {
     function submit() {
-      var msg = { m: "siteban" };
+      var msg = {
+        m: "siteban"
+      };
 
       msg.id = $("#siteban .text[name=id]").val();
 
@@ -3307,13 +3510,27 @@ $(function () {
       } else {
         var factor = 0;
         switch (durationUnit) {
-          case "seconds": factor = 1000; break;
-          case "minutes": factor = 1000 * 60; break;
-          case "hours": factor = 1000 * 60 * 60; break;
-          case "days": factor = 1000 * 60 * 60 * 24; break;
-          case "weeks": factor = 1000 * 60 * 60 * 24 * 7; break;
-          case "months": factor = 1000 * 60 * 60 * 24 * 30; break;
-          case "years": factor = 1000 * 60 * 60 * 24 * 365; break;
+          case "seconds":
+            factor = 1000;
+            break;
+          case "minutes":
+            factor = 1000 * 60;
+            break;
+          case "hours":
+            factor = 1000 * 60 * 60;
+            break;
+          case "days":
+            factor = 1000 * 60 * 60 * 24;
+            break;
+          case "weeks":
+            factor = 1000 * 60 * 60 * 24 * 7;
+            break;
+          case "months":
+            factor = 1000 * 60 * 60 * 24 * 30;
+            break;
+          case "years":
+            factor = 1000 * 60 * 60 * 24 * 365;
+            break;
         }
         var duration = factor * parseFloat($("#siteban input[name=durationNumber]").val());
         if (duration < 0) {
@@ -3369,6 +3586,7 @@ $(function () {
     $("#siteban .text[name=id]").keypress(textKeypressEvent);
     $("#siteban .text[name=reasonText]").keypress(textKeypressEvent);
     $("#siteban .text[name=note]").keypress(textKeypressEvent);
+
     function textKeypressEvent(evt) {
       if (evt.keyCode == 13) {
         submit();
@@ -3382,7 +3600,7 @@ $(function () {
       return false;
     }
   })();
- 
+
   // chatctor
 
   ////////////////////////////////////////////////////////////////
@@ -3453,6 +3671,9 @@ $(function () {
     gClient.on("dm", function (msg) {
       chat.receive(msg);
     });
+    gClient.on("reply", function (msg) {
+      chat.receive(msg);
+    });
 
     $("#chat input").on("focus", function (evt) {
       releaseKeyboard();
@@ -3509,6 +3730,10 @@ $(function () {
               chat.blur();
             }, 100);
           }
+          if (gIsReplyingTo.length > 0) {
+            gIsReplyingTo = '';
+            $('#chat-input')[0].placeholder = 'You can chat with this thing.';
+          }
         }
         evt.preventDefault();
         evt.stopPropagation();
@@ -3544,6 +3769,22 @@ $(function () {
       }
     });*/
 
+    const replyTo = msg => {
+      if (!gKnowsHowToReply) {
+        localStorage.knowsHowToReply = true;
+        gKnowsHowToReply = true;
+        new Notification({
+          target: '#piano',
+          duration: 20000,
+          title: 'How to Reply',
+          text: 'After you click the button to reply to someone, your next chat message will be mentioning them and their message. To go back to talking in public chat without replying, send a blank chat message.',
+        });
+      }
+      gIsDming = false;
+      gIsReplyingTo = msg.id;
+      $('#chat-input')[0].placeholder = 'Replying to ' + msg.p.name + '.';
+    }
+
     return {
       show: function () {
         $("#chat").fadeIn();
@@ -3572,18 +3813,33 @@ $(function () {
       },
 
       send: function (message) {
-        if (gIsDming) {
-          gClient.sendArray([{ m: 'dm', _id: gDmParticipant._id, message: message }]);
+        if (gIsReplyingTo.length > 0) {
+          gClient.sendArray([{
+            m: 'reply',
+            id: gIsReplyingTo,
+            message: message
+          }]);
+        } else if (gIsDming) {
+          gClient.sendArray([{
+            m: 'dm',
+            _id: gDmParticipant._id,
+            message: message
+          }]);
         } else {
-          gClient.sendArray([{ m: "a", message: message }]);
+          gClient.sendArray([{
+            m: "a",
+            message: message
+          }]);
         }
       },
 
       receive: function (msg) {
         if (msg.m === 'dm') {
-          if (gChatMutes.indexOf(msg.sender._id) != -1) return;
+          if (gChatMutes.includes(msg.sender._id)) return;
+        } else if (msg.m === 'reply') {
+          if (gChatMutes.includes(msg.p._id) || gChatMutes.includes(msg.oldp._id)) return;
         } else {
-          if (gChatMutes.indexOf(msg.p._id) != -1) return;
+          if (gChatMutes.includes(msg.p._id)) return;
         }
 
         //construct string for creating list element
@@ -3605,7 +3861,13 @@ $(function () {
           }
         }
 
-        if (isSpecialDm) {
+        if (msg.m === 'reply') {
+          liString += '<span class="replyText"/>';
+          if (gShowIdsInChat) liString += '<span class="id"/>';
+          liString += '<span class="name"/><span class="message2"/><span class="replyArrow"/>';
+          if (gShowIdsInChat) liString += '<span class="id2"/>';
+          liString += '<span class="name2"/><span class="message"/>';
+        } else if (isSpecialDm) {
           if (gShowIdsInChat) liString += '<span class="id"/>';
           liString += '<span class="name"/><span class="dmArrow"/>';
           if (gShowIdsInChat) liString += '<span class="id2"/>';
@@ -3634,6 +3896,14 @@ $(function () {
           }
         }
 
+        if (msg.m === 'reply') {
+          li.find(".replyText").text('Reply');
+          li.find(".replyText").css("color", '#55ff55');
+
+          li.find(".replyArrow").text('->');
+          li.find(".replyArrow").css("color", '#55ff55');
+        }
+
         if (gShowTimestampsInChat) {
           li.find(".timestamp").text(new Date(msg.t).toLocaleTimeString());
         }
@@ -3654,10 +3924,8 @@ $(function () {
                 document.title = "You were mentioned!";
               }
               return `<span class="mention" style="background-color: ${user.color};">${nick}</span>`;
-            }
-            else return "@" + nick;
-          }
-          else return match;
+            } else return `@${nick}`;
+          } else return match;
         });
 
         // link formatting
@@ -3669,7 +3937,33 @@ $(function () {
         //apply names, colors, ids
         li.find(".message").html(message);
 
-        if (msg.m === 'dm') {
+        if (msg.m === 'reply') {
+          var oldMessage = $('<div>').text(msg.olda.length > 128 ? `${msg.olda.substr(0, 128)}\u2026` : msg.olda).html();
+
+          //apply names, colors, ids
+          li.find(".message2").html(oldMessage);
+          if (!gNoChatColors) li.find(".name").css("color", msg.oldp.color || "white");
+          if (!gNoChatColors) li.find(".name2").css("color", msg.p.color || "white");
+          var nick = $('<div>').text(msg.oldp.name).html();
+          if (msg.oldp._id === gClient.getOwnParticipant()._id) {
+            if (!tabIsActive) {
+              youreMentioned = true;
+              document.title = "You were mentioned!";
+            }
+            li.find(".name").html(`<span class="mention" style="background-color: ${msg.oldp.color};">${nick}</span>:`);
+          } else {
+            li.find(".name").text(`@${msg.oldp.name}:`);
+          }
+          li.find(".name2").text(`${msg.p.name}:`);
+
+          if (gShowIdsInChat) li.find(".id").text(msg.oldp._id.substring(0, 6));
+          if (gShowIdsInChat) li.find(".id2").text(msg.p._id.substring(0, 6));
+
+          li.find(".message2").css("color", msg.oldp.color || "white");
+          li.find(".message").css("color", msg.p.color || "white");
+
+          if (gShowChatTooltips) li[0].title = msg.p._id;
+        } else if (msg.m === 'dm') {
           if (!gNoChatColors) li.find(".message").css("color", msg.sender.color || "white");
           if (gShowIdsInChat) {
             if (msg.sender._id === gClient.user._id) {
@@ -3682,6 +3976,7 @@ $(function () {
           if (msg.sender._id === gClient.user._id) { //sent dm
             if (!gNoChatColors) li.find(".name").css("color", msg.recipient.color || "white");
             li.find(".name").text(msg.recipient.name + ":");
+
             if (gShowChatTooltips) li[0].title = msg.recipient._id;
           } else if (msg.recipient._id === gClient.user._id) { //received dm
             if (!gNoChatColors) li.find(".name").css("color", msg.sender.color || "white");
@@ -3709,6 +4004,19 @@ $(function () {
           if (gShowIdsInChat) li.find(".id").text(msg.p._id.substring(0, 6));
 
           if (gShowChatTooltips) li[0].title = msg.p._id;
+        }
+
+        // reply button 
+
+        if (typeof msg.id === 'string') {
+          const replyButton = document.createElement('span');
+          replyButton.className = 'reply-button';
+          replyButton.textContent = 'Reply';
+          replyButton.addEventListener('click', () => {
+            replyTo(msg);
+          });
+
+          li[0].appendChild(replyButton);
         }
 
         //put list element in chat
@@ -3767,12 +4075,33 @@ $(function () {
   MIDI_KEY_NAMES.push("c7");
 
   var devices_json = "[]";
+
   function sendDevices() {
-    gClient.sendArray([{ "m": "devices", "list": JSON.parse(devices_json) }]);
+    gClient.sendArray([{
+      "m": "devices",
+      "list": JSON.parse(devices_json)
+    }]);
   }
   gClient.on("connect", sendDevices);
 
-  var pitchBends = { 0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0, 14: 0, 15: 0 };
+  var pitchBends = {
+    0: 0,
+    1: 0,
+    2: 0,
+    3: 0,
+    4: 0,
+    5: 0,
+    6: 0,
+    7: 0,
+    8: 0,
+    9: 0,
+    10: 0,
+    11: 0,
+    12: 0,
+    13: 0,
+    14: 0,
+    15: 0
+  };
 
   (function () {
 
@@ -3938,7 +4267,11 @@ $(function () {
                 });
                 if (gMidiVolumeTest) {
                   var knob = document.createElement("canvas");
-                  mixin(knob, { width: 16 * window.devicePixelRatio, height: 16 * window.devicePixelRatio, className: "knob" });
+                  mixin(knob, {
+                    width: 16 * window.devicePixelRatio,
+                    height: 16 * window.devicePixelRatio,
+                    className: "knob"
+                  });
                   li.appendChild(knob);
                   knob = new Knob(knob, 0, 2, 0.01, input.volume, "volume");
                   knob.canvas.style.width = "16px";
@@ -3979,7 +4312,11 @@ $(function () {
                 });
                 if (gMidiVolumeTest) {
                   var knob = document.createElement("canvas");
-                  mixin(knob, { width: 16 * window.devicePixelRatio, height: 16 * window.devicePixelRatio, className: "knob" });
+                  mixin(knob, {
+                    width: 16 * window.devicePixelRatio,
+                    height: 16 * window.devicePixelRatio,
+                    className: "knob"
+                  });
                   li.appendChild(knob);
                   knob = new Knob(knob, 0, 2, 0.01, output.volume, "volume");
                   knob.canvas.style.width = "16px";
@@ -4004,7 +4341,13 @@ $(function () {
             h1.textContent = "Outputs";
             div.appendChild(h1);
             div.appendChild(outputs_ul);
-            connectionsNotification = new Notification({ "id": "MIDI-Connections", "title": "MIDI Connections", "duration": sticky ? "-1" : "4500", "html": div, "target": "#midi-btn" });
+            connectionsNotification = new Notification({
+              "id": "MIDI-Connections",
+              "title": "MIDI Connections",
+              "duration": sticky ? "-1" : "4500",
+              "html": div,
+              "target": "#midi-btn"
+            });
           }
 
           document.getElementById("midi-btn").addEventListener("click", function (evt) {
@@ -4141,12 +4484,19 @@ $(function () {
         recording = true;
         button.textContent = "Stop Recording";
         button.classList.add("stuck");
-        new Notification({ "id": "mp3", "title": "Recording MP3...", "html": "It's recording now.  This could make things slow, maybe.  Maybe give it a moment to settle before playing.<br><br>This feature is experimental.", "duration": 10000 });
+        new Notification({
+          "id": "mp3",
+          "title": "Recording MP3...",
+          "html": "It's recording now.  This could make things slow, maybe.  Maybe give it a moment to settle before playing.<br><br>This feature is experimental.",
+          "duration": 10000
+        });
       } else {
         // stop recording
         var mp3buf = encoder.flush();
         mp3_buffer.push(mp3buf);
-        var blob = new Blob(mp3_buffer, { type: "audio/mp3" });
+        var blob = new Blob(mp3_buffer, {
+          type: "audio/mp3"
+        });
         var url = URL.createObjectURL(blob);
         scriptProcessorNode.onaudioprocess = null;
         audio.masterGain.disconnect(scriptProcessorNode);
@@ -4154,15 +4504,22 @@ $(function () {
         recording = false;
         button.textContent = "Record MP3";
         button.classList.remove("stuck");
-        new Notification({ "id": "mp3", "title": "MP3 recording finished", "html": "<a href=\"" + url + "\" target=\"blank\">And here it is!</a> (open or save as)<br><br>This feature is experimental.", "duration": 0 });
+        new Notification({
+          "id": "mp3",
+          "title": "MP3 recording finished",
+          "html": "<a href=\"" + url + "\" target=\"blank\">And here it is!</a> (open or save as)<br><br>This feature is experimental.",
+          "duration": 0
+        });
       }
     });
+
     function onAudioProcess(evt) {
       var inputL = evt.inputBuffer.getChannelData(0);
       var inputR = evt.inputBuffer.getChannelData(1);
       var mp3buf = encoder.encodeBuffer(convert16(inputL), convert16(inputR));
       mp3_buffer.push(mp3buf);
     }
+
     function convert16(samples) {
       var len = samples.length;
       var result = new Int16Array(len);
@@ -4238,7 +4595,11 @@ $(function () {
       // on/off button
       (function () {
         var button = document.createElement("input");
-        mixin(button, { type: "button", value: "ON/OFF", className: enableSynth ? "switched-on" : "switched-off" });
+        mixin(button, {
+          type: "button",
+          value: "ON/OFF",
+          className: enableSynth ? "switched-on" : "switched-off"
+        });
         button.addEventListener("click", function (evt) {
           enableSynth = !enableSynth;
           button.className = enableSynth ? "switched-on" : "switched-off";
@@ -4259,7 +4620,11 @@ $(function () {
 
       // mix
       var knob = document.createElement("canvas");
-      mixin(knob, { width: 32 * window.devicePixelRatio, height: 32 * window.devicePixelRatio, className: "knob" });
+      mixin(knob, {
+        width: 32 * window.devicePixelRatio,
+        height: 32 * window.devicePixelRatio,
+        className: "knob"
+      });
       html.appendChild(knob);
       knob = new Knob(knob, 0, 100, 0.1, 50, "mix", "%");
       knob.canvas.style.width = "32px";
@@ -4275,7 +4640,10 @@ $(function () {
       (function () {
         osc1_type = osc_types[osc_type_index];
         var button = document.createElement("input");
-        mixin(button, { type: "button", value: osc_types[osc_type_index] });
+        mixin(button, {
+          type: "button",
+          value: osc_types[osc_type_index]
+        });
         button.addEventListener("click", function (evt) {
           if (++osc_type_index >= osc_types.length) osc_type_index = 0;
           osc1_type = osc_types[osc_type_index];
@@ -4286,7 +4654,11 @@ $(function () {
 
       // osc1 attack
       var knob = document.createElement("canvas");
-      mixin(knob, { width: 32 * window.devicePixelRatio, height: 32 * window.devicePixelRatio, className: "knob" });
+      mixin(knob, {
+        width: 32 * window.devicePixelRatio,
+        height: 32 * window.devicePixelRatio,
+        className: "knob"
+      });
       html.appendChild(knob);
       knob = new Knob(knob, 0, 1, 0.001, osc1_attack, "osc1 attack", "s");
       knob.canvas.style.width = "32px";
@@ -4298,7 +4670,11 @@ $(function () {
 
       // osc1 decay
       var knob = document.createElement("canvas");
-      mixin(knob, { width: 32 * window.devicePixelRatio, height: 32 * window.devicePixelRatio, className: "knob" });
+      mixin(knob, {
+        width: 32 * window.devicePixelRatio,
+        height: 32 * window.devicePixelRatio,
+        className: "knob"
+      });
       html.appendChild(knob);
       knob = new Knob(knob, 0, 2, 0.001, osc1_decay, "osc1 decay", "s");
       knob.canvas.style.width = "32px";
@@ -4309,7 +4685,11 @@ $(function () {
       knob.emit("change", knob);
 
       var knob = document.createElement("canvas");
-      mixin(knob, { width: 32 * window.devicePixelRatio, height: 32 * window.devicePixelRatio, className: "knob" });
+      mixin(knob, {
+        width: 32 * window.devicePixelRatio,
+        height: 32 * window.devicePixelRatio,
+        className: "knob"
+      });
       html.appendChild(knob);
       knob = new Knob(knob, 0, 1, 0.001, osc1_sustain, "osc1 sustain", "x");
       knob.canvas.style.width = "32px";
@@ -4321,7 +4701,11 @@ $(function () {
 
       // osc1 release
       var knob = document.createElement("canvas");
-      mixin(knob, { width: 32 * window.devicePixelRatio, height: 32 * window.devicePixelRatio, className: "knob" });
+      mixin(knob, {
+        width: 32 * window.devicePixelRatio,
+        height: 32 * window.devicePixelRatio,
+        className: "knob"
+      });
       html.appendChild(knob);
       knob = new Knob(knob, 0, 2, 0.001, osc1_release, "osc1 release", "s");
       knob.canvas.style.width = "32px";
@@ -4340,7 +4724,12 @@ $(function () {
 
 
       // notification
-      notification = new Notification({ title: "Synthesize", html: html, duration: -1, target: "#synth-btn" });
+      notification = new Notification({
+        title: "Synthesize",
+        html: html,
+        duration: -1,
+        target: "#synth-btn"
+      });
       notification.on("close", function () {
         var tip = document.getElementById("tooltip");
         if (tip) tip.parentNode.removeChild(tip);
@@ -4594,7 +4983,12 @@ $(function () {
 
 
       // notification
-      notification = new Notification({ title: "Client Settings", html: html, duration: -1, target: "#client-settings-btn" });
+      notification = new Notification({
+        title: "Client Settings",
+        html: html,
+        duration: -1,
+        target: "#client-settings-btn"
+      });
       notification.on("close", function () {
         var tip = document.getElementById("tooltip");
         if (tip) tip.parentNode.removeChild(tip);
