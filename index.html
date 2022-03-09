@@ -110,13 +110,19 @@
         <p><label><input type="checkbox" name="nocussing" class="checkbox">No Cussing</label></p>
         <p><label>Inner color: &nbsp;<input type="color" name="color" placeholder="" maxlength="7" class="color"></label></p>
         <p><label>Outer color: &nbsp;<input type="color" name="color2" placeholder="" maxlength="7" class="color"></label></p>
-        <p><label>Player limit: &nbsp;<input type="text" name="limit" maxlength="2" value="50"></label></p>
+        <p><label>Player limit: &nbsp;<input type="text" name="max" maxlength="2" value="50"></label></p>
         <button class="submit">APPLY</button>
       </div>
       <div id="rename" class="dialog">
-        <p><input type="text" name="name" placeholder="My Fancy New Name" maxlength="40" class="text" />
+        <p>
+          <input type="text" name="name" placeholder="My Fancy New Name" maxlength="40" class="text" />
           <input type="color" name="color" placeholder="" maxlength="7" class="color" />
         </p>
+        <select name="statusSelect">
+          <option value="Online">Online</option>
+          <option value="Idle">idle</option>
+          <option value="DND">DND</option>
+        </select>
         <button class="submit">USER SET</button>
       </div>
       <div id="siteban" class="dialog">
@@ -163,18 +169,6 @@
         <p name="errorText" style="color:red; font-size: 16px;"></p>
         <button class="submit">BAN</button>
       </div>
-      <div id="account" class="dialog">
-        <p>
-          <label>Log in: <div class="ugly-button login-discord">Discord</div></label>
-        </p>
-        <div id="account-info">
-          <div id="logged-in-text" class="text logged-in-text">Logged in as</div>
-          <img id="avatar-image" class="avatar-image"></img>
-          <div id="logged-in-user-text" class="logged-in-user-text"></div>
-        </div>
-        <div id="logout-btn" class="ugly-button logout-btn">Log out</div>
-      </div>
-    </div>
   </div>
 
   <script src="/jquery.min.js"></script>
