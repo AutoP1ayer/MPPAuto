@@ -1449,15 +1449,13 @@ $(function () {
         part.nameDiv.appendChild(vanishDiv);
       }
       if (part.tag) {
-        if (part.tag.text !== "USER") {
-          hasOtherDiv = true;
-          var tagDiv = document.createElement("div");
-          tagDiv.className = "nametag";
-          tagDiv.textContent = tagText || "";
-          tagDiv.style.backgroundColor = tagColor(part.tag);
-          tagDiv.id = 'nametag-' + part._id;
-          part.nameDiv.appendChild(tagDiv);
-        }
+        hasOtherDiv = true;
+        var tagDiv = document.createElement("div");
+        tagDiv.className = "nametag";
+        tagDiv.textContent = tagText || "";
+        tagDiv.style.backgroundColor = tagColor(part.tag);
+        tagDiv.id = 'nametag-' + part._id;
+        part.nameDiv.appendChild(tagDiv);
       }
 
       var textDiv = document.createElement("div");
@@ -1569,7 +1567,6 @@ $(function () {
       if (tag === 'ADMIN') return '#f55';
       if (tag === 'MOD') return '#0a0';
       if (tag === 'MEDIA') return '#f5f';
-      if (tag === 'USER') return '#073763';
       return '#777';
     }
 
