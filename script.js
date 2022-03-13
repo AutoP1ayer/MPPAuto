@@ -698,9 +698,9 @@ $(function () {
     var ctx = this.whiteKeyRender.getContext("2d");
     if (ctx.createLinearGradient) {
       var gradient = ctx.createLinearGradient(0, 0, 0, this.whiteKeyHeight);
-      gradient.addColorStop(0, "#eee");
-      gradient.addColorStop(0.75, "#fff");
-      gradient.addColorStop(1, "#dad4d4");
+      gradient.addColorStop(0, "#69a3ce");
+      gradient.addColorStop(0.75, "#69a3ce");
+      gradient.addColorStop(1, "#69a3ce");
       ctx.fillStyle = gradient;
     } else {
       ctx.fillStyle = "#fff";
